@@ -4,6 +4,14 @@
 
 The domain is to find best route by lower price given two points (GRU-CDG) and to save new non-existent routes to the database.
 
+## Domain Validation
+
+There are some validations like **mandatory fields** and **input pattern**
+
+- For example if you input a **source and destination** (**info route**) with underscore for example **"GRU_CDG"**, it will return an error saying that info route is invalid and an example showing that **GRU-CDG** pattern is the correct. Use hyphen instead of underscore.
+
+- If you input a **info route** which **doesn't exist** when fetching by best route, it will return "Route was not found with **GRX-CSD**" for example.
+
 ## Database
 
 Database is using **CSV** format and is located in **db** directory in root project.
@@ -12,7 +20,7 @@ This project has two communication endpoints, one through console and another th
 
 ## Console 
 
-Input a source and destination in console to find best route by lower price.
+Input a source and destination in console for example 'GRU-CDG' to find best route by lower price.
 
 ## Rest Endpoints
 
