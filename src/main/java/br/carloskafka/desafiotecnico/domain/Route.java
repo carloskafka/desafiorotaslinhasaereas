@@ -36,17 +36,22 @@ public class Route {
 				infoRouteSplitted = infoRoute.split(INPUT_DELIMITER_HYPHEN);
 			} else {
 				valid = false;
-				errors.add("Best route was not found. Given input: " + infoRoute + " is invalid. Add a valid input, for example: GRU-CDG or GRU-BRC-CDG");
+				errors.add("Best route was not found. Given input: " + infoRoute
+						+ " is invalid. Add a valid input, for example: GRU-CDG or GRU-BRC-CDG");
 			}
 
 			if (infoRouteSplitted != null) {
 				for (String infoRoute : infoRouteSplitted) {
 					infoRoute = infoRoute.replaceAll("\\s+", "");
 
-					if (infoRoute.matches("[0-9]+")) {
-						price = Double.parseDouble(infoRoute);
-					} else {
+					if (infoRoute.matches("[a-zA-Z]+") && infoRoute.length() == 3) {
 						places.add(infoRoute);
+					} else {
+						try {
+							price = Double.parseDouble(infoRoute);
+						} catch (Exception e) {
+							price = null;
+						}
 					}
 				}
 				updateInfoRouteWithCorrectedPrice();

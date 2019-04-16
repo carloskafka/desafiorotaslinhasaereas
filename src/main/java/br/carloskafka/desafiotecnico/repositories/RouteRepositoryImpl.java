@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -24,7 +25,7 @@ public class RouteRepositoryImpl implements RouteRepository {
 
 		try {
 			if (!containsRoute(route)) {
-				Files.write(Paths.get(databaseFile.getAbsolutePath()), route.toCompleteInfo().getBytes());				
+				Files.write(Paths.get(databaseFile.getAbsolutePath()), route.toCompleteInfo().getBytes(), StandardOpenOption.APPEND);				
 			}
 			saved = true;
 		} catch (Exception e) {
